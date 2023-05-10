@@ -1,16 +1,18 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+from pprint import pprint
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def get_dict(file_path):
+    cook_book = {}
+    with open(file_path, 'r', encoding='utf8') as file:
+        while recipe := file.readline().strip():
+            cook_book[recipe] = []
+            for _ in range(int(file.readline())):
+                ingredient = file.readline().strip().split(sep='|')
+                cook_book[recipe].append({'ingredient_name': ingredient[0].strip(),
+                                          'quantity': ingredient[1].strip(),
+                                          'measure': ingredient[2].strip()})
+            file.readline()
+    return cook_book
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+pprint(get_dict('file.txt'))
