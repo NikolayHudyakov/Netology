@@ -10,7 +10,7 @@ if __name__ == '__main__':
 
     # Задача 2
     path_to_file = 'file.txt'
-    token = ...
+    token = 'y0_AgAEA7qjV931AADLWwAAAADjWIU9vdsi4WaTRvyxthkumuaZoiPwQVQ'
     uploader = YaUploader(token)
     result = uploader.upload(path_to_file)
     print(result)
