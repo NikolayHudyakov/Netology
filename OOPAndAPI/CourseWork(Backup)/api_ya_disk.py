@@ -14,7 +14,7 @@ class ApiYaDisk:
             }
         for photo in photos:
             params = {
-                "path": f'{path_folder}{str(photo["likes"])}.jpg', 
+                "path": f'/{path_folder}/{str(photo["likes"])}.jpg', 
                 "overwrite": "true"
                 }
             href = requests.get(url, headers=headers, params=params).json()['href']
