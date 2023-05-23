@@ -11,7 +11,7 @@ class Backup:
         self.ya_disk_token = ya_disk_token
         self.vk_token = os.getenv('VK_API_TOKEN')
 
-    def upload_photos(self, user_id: int) -> bool:
+    def upload_photos(self, user_id: int) -> list:
         api_vk = ApiVK(self.vk_token)
         photos = api_vk.get_url_user_photos(user_id)
         api_ya_disk = ApiYaDisk(self.ya_disk_token)

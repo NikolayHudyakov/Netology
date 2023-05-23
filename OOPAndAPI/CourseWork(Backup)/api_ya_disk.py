@@ -13,7 +13,7 @@ class ApiYaDisk:
             'Authorization': f'OAuth {token}'
             }
 
-    def upload_photo(self, photos: dict, path_folder: str) -> bool:
+    def upload_photo(self, photos: dict, path_folder: str) -> list:
         self.__create_folder(path_folder)
         photo_info = []
         for url_photo, name in self.__create_names(photos).items():
@@ -27,7 +27,8 @@ class ApiYaDisk:
                 print(f'Фото {name} загружено ({response.status_code})')
             else:
                 print(f'Фото {name} не загружено ({response.status_code})')
-        return self.__write_photo_info(photo_info)
+        self.__write_photo_info(photo_info)
+        return photo_info
 
     def __get_href_upload(self, path: str) -> str:
         url = f'{self.BASE_URL}v1/disk/resources/upload'
@@ -52,7 +53,7 @@ class ApiYaDisk:
                rename_photos[url] = f'{likes}{datetime.now}.jpg' 
         return rename_photos
     
-    def __write_photo_info(self, photo_info: list[dict]) -> bool:
+    def __write_photo_info(self, photo_info: list[dict]) -> None:
          with open('photoInfo.txt', 'w') as f:
             f.write(json.dumps(photo_info, indent=1))
 
