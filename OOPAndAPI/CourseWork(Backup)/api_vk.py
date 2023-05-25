@@ -1,10 +1,11 @@
 import requests
+import os
 
 
 class ApiVK:
-    def __init__(self, token: str, version='5.131') -> None:
+    def __init__(self, version='5.131') -> None:
         self.params = {
-            'access_token': token, 
+            'access_token': os.getenv('VK_API_TOKEN'), 
             'v': version
             }
 
@@ -22,12 +23,16 @@ class ApiVK:
             data_photos = response.json()['response']['items']
             photos = {}
             for photo in data_photos:
-                photos[self.__get_url_maxsize_photo(photo['sizes'])] = photo['likes']['count']
+                max_size_photo = self.__get_url_maxsize_photo(photo['sizes'])
+                photos[max_size_photo['url']] = {
+                    'likes': photo['likes']['count'],
+                    'size_type': max_size_photo['type']
+                    } 
             return photos
         return response.status_code
     
-    def __get_url_maxsize_photo(self, photos: list[dict]) -> str:
-        return max(photos, key=lambda p: p['height'] * p['width'])['url']
+    def __get_url_maxsize_photo(self, photos: list[dict]) -> dict:
+        return max(photos, key=lambda p: p['height'] * p['width'])
     
 
     
