@@ -48,7 +48,7 @@ VALUES(1, 'Compilation_name1', '2020-07-18');
 INSERT INTO compilations 
 VALUES(2, 'Compilation_name2', '2023-07-19');
 INSERT INTO compilations 
-VALUES(4, 'Compilation_name3', '2023-07-20');
+VALUES(3, 'Compilation_name3', '2023-07-20');
 
 --Insert albums_performers
 INSERT INTO albums_performers  
