@@ -18,3 +18,4 @@ if __name__ == '__main__':
         # clients.delete_client(3)
         # print(clients.find_client('FirstName'))
         print(clients.find_client(phone='89991111111'))
+        conn.close()
