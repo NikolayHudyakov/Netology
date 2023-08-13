@@ -1,0 +1,44 @@
+{
+    "datetime": "2023-08-13 21:41:02.518040",
+    "args": [],
+    "kwargs": {},
+    "function_name": "hello_world",
+    "function_result": "Hello World"
+}{
+    "datetime": "2023-08-13 21:41:02.518040",
+    "args": [
+        2,
+        2
+    ],
+    "kwargs": {},
+    "function_name": "summator",
+    "function_result": 4
+}{
+    "datetime": "2023-08-13 21:41:02.518040",
+    "args": [
+        6,
+        2
+    ],
+    "kwargs": {},
+    "function_name": "div",
+    "function_result": 3.0
+}{
+    "datetime": "2023-08-13 21:41:02.518040",
+    "args": [
+        4.3
+    ],
+    "kwargs": {
+        "b": 2.2
+    },
+    "function_name": "summator",
+    "function_result": 6.5
+}{
+    "datetime": "2023-08-13 21:41:02.519032",
+    "args": [],
+    "kwargs": {
+        "a": 0,
+        "b": 0
+    },
+    "function_name": "summator",
+    "function_result": 0
+}
