@@ -1,3 +1,4 @@
+from django.http import HttpRequest
 from django.shortcuts import render
 
 DATA = {
@@ -28,3 +29,34 @@ DATA = {
 #     'ингредиент2': количество2,
 #   }
 # }
+
+
+def get_recipe(name: str, servings: int) -> dict[str, int]:
+    ingredients = {}
+    for ingredient, amount in DATA[name].items():
+        ingredients[ingredient] = amount * servings
+    return ingredients
+
+
+def get_omlet(request: HttpRequest):
+    servings = int(request.GET.get('servings', 1))
+    context = {
+      'recipe': get_recipe('omlet', servings)
+    }
+    return render(request, 'calculator/index.html', context)
+
+
+def get_pasta(request: HttpRequest):
+    servings = int(request.GET.get('servings', 1))
+    context = {
+      'recipe': get_recipe('pasta', servings)
+    }
+    return render(request, 'calculator/index.html', context)
+
+
+def get_buter(request: HttpRequest):
+    servings = int(request.GET.get('servings', 1))
+    context = {
+      'recipe': get_recipe('buter', servings)
+    }
+    return render(request, 'calculator/index.html', context)
