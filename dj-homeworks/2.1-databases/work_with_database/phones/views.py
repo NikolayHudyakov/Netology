@@ -29,7 +29,7 @@ def show_catalog(request):
 def show_product(request, slug):
     template = 'product.html'
     context = {
-        'phone': Phone.objects.filter(slug=slug) # как привести тип QuerySet в тип Phone?
+        'phone': Phone.objects.filter(slug=slug).first() # как привести тип QuerySet в тип Phone?
     }
     print(context)
     return render(request, template, context)
