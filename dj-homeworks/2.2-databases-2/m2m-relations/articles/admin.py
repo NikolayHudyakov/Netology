@@ -11,7 +11,11 @@ class ArticleAdmin(admin.ModelAdmin):
 
 
 class ScopeInlineFormSet(BaseInlineFormSet):
-    pass
+    def clean(self):
+        for form in self.forms:
+            if not form.cleaned_data['article']:
+                raise ValidationError('Тут всегда ошибка')
+        return super().clean()  # вызываем базовый код переопределяемого метода
 
 
 class ScopeInline(admin.TabularInline):
