@@ -12,9 +12,12 @@ class ArticleAdmin(admin.ModelAdmin):
 
 class ScopeInlineFormSet(BaseInlineFormSet):
     def clean(self):
+        count_main_tag = 0
         for form in self.forms:
-            if not form.cleaned_data['article']:
-                raise ValidationError('Тут всегда ошибка')
+            if form.cleaned_data['is_main']:
+                count_main_tag += 1
+            if count_main_tag > 1:
+                raise ValidationError('Должен быть только один основной тэг')
         return super().clean()  # вызываем базовый код переопределяемого метода
 
 
