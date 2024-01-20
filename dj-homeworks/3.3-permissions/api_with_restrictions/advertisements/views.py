@@ -22,9 +22,7 @@ class AdvertisementViewSet(ModelViewSet):
 
     def get_permissions(self):
         """Получение прав для действий."""
-        if self.action in ["create", "update", "partial_update"]:
+        if self.action in ["create", "update", "partial_update", "destroy"]:
             return [IsAuthenticated()]
         return []
 
-    def destroy(self, request, *args, **kwargs):
-        pass

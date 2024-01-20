@@ -44,5 +44,5 @@ Content-Type: application/json
 ###
 
 
-DELETE {{baseUrl}}/advertisements/3
+DELETE {{baseUrl}}/advertisements/3/
 Authorization: Token 16fec6a7f50ec5c5c1219a4057c093493f185770
