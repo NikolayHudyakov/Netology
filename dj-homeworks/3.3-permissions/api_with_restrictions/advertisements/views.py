@@ -16,13 +16,12 @@ class AdvertisementViewSet(ModelViewSet):
     filter_backends = [DjangoFilterBackend]
     filterset_class = AdvertisementFilter
     throttle_classes = [AnonRateThrottle, UserRateThrottle]
-    permission_classes = [IsOwnerOrReadOnly]
     # TODO: настройте ViewSet, укажите атрибуты для кверисета,
     #   сериализаторов и фильтров
 
     def get_permissions(self):
         """Получение прав для действий."""
         if self.action in ["create", "update", "partial_update", "destroy"]:
-            return [IsAuthenticated()]
+            return [IsAuthenticated(), IsOwnerOrReadOnly()]
         return []
 
